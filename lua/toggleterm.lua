@@ -273,6 +273,9 @@ end
 -- If any terminal exists but is not open it will be open
 function M.toggle_all(force)
   local terminals = terms.get_all()
+  if next(terminals) == nil then
+   M.toggle(1)
+  end
 
   if force and ui.find_open_windows() then
     for _, term in pairs(terminals) do
